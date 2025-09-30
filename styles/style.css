@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} 
+
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0; 
+    display:flex; 
+    justify-content: center;
+    align-items: center;
+    min-height:100vh; 
+    padding:20px;
+} 
+
+.dashboard {
+    max-width:900px;
+    width:100%;
+    background:linear-gradient(135deg, #2a2a2a, #1e1e1e);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+}
+
+.header{
+    background-color:  #0d1b2a;
+    padding: 15px 20px;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+    border-bottom: 2px solid #415a77; 
+}
+
+.header-title{
+    font-size: 24px; 
+    font-weight: bold; 
+    color: #4cc9f0;
+} 
+
+.status-indicators{
+    display: flex;
+    gap:15px; 
+}
+
+.car-status{
+    display: flex;
+    align-items:center; 
+    gap:5px;
+    font-size:14px;
+}
+
+.status-dot{
+    width:10px; 
+    height:10px;
+    border-radius: 50%;
+}
+
+.standby{
+    background-color: #fbbf24;
+}
+
+.disabled{
+    background-color: #ef4444
+}
+
+.main-controls{
+    display:flex; 
+    padding: 20px; 
+    gap: 15px; 
+} 
+
+.left-panel{
+    flex: 1; 
+    display:flex; 
+    flex-direction:column; 
+    gap:15px;
+}
+
+.panel{
+    background-color: #2d3748;
+    border-radius: 10px; 
+    padding: 15px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+} 
+
+.panel-title{
+    font-size: 18px; 
+    margin-bottom:15px; 
+    color:#90cdf4;
+    border-bottom: 1px solid #4a5568;
+    padding-bottom: 8px; 
+    font-weight: 600;
+} 
+
+.cacc-controls, .lcc-controls{
+    display:flex; 
+    flex-direction: column;
+    gap: 12px;
+} 
+
+.enable-row{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+
+.control-enable{
+    font-size:14px; 
+} 
+
+.button-group{
+    display:flex;
+    gap:10px;
+} 
+
+.btn{
+    padding: 8px 15px; 
+    border:none;
+    border-radius:6px; 
+    cursor:pointer;
+    font-weight: 500; 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.btn-primary{
+    background-color: #2563eb; 
+    color: white;
+}
+
+.btn-primary:hover{
+    background-color:#1d4ed8;
+} 
+
+.btn-success{
+   background-color: #16a34a;
+   color: white; 
+}
+
+.btn-success:hover{
+    background-color:#15803d;
+}
+
+.btn-warning{
+    background-color: #d97706;
+    color: white;
+}
+
+.btn-warning:hover{
+    background-color:#b45309;
+} 
+
+.btn-danger{
+    background-color: #dc2626;
+    color: white;
+} 
+
+.btn-danger:hover{
+    background-color:#b91c1c;
+} 
+
+.btn:disabled{
+    background-color: #4b5563;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.right-panel{
+    flex:1; 
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+} 
+
+.speed-display{
+    display:flex; 
+    align-items:center;  
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.speed-value{
+    font-size:48px; 
+    font-weight: bold; 
+}
+
+.speed-unit{
+    font-size: 18px; 
+    color:#a5b4fc;
+}
+
+.slider-container{
+    margin: 10px 0;
+}
+
+.slider-label{
+    display:flex; 
+    justify-content: space-between;
+    margin-bottom: 5px; 
+}
+
+.slider{
+    width:100%; 
+    height:8px; 
+    border-radius:5px; 
+    -webkit-appearance: none;
+    background: #4b5563;
+    outline:none;
+} 
+
+.slider:hover{
+    opacity:1
+} 
+
+.slider::-webkit-slider-thumb{
+    -webkit-appearance: none; 
+     width: 20px; 
+     height: 20px; 
+     border-radius: 50%;
+     background: #4cc9f0; 
+     cursor: pointer;
+}
+
+.status-message{
+    text-align:center;
+    padding:12px; 
+    border-radius:5px; 
+    font-size:14px; 
+    margin:5px;
+} 
+
+.status-info{
+    background-color: #1e40af;
+}
