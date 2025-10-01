@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
 } 
 
 body {
@@ -18,7 +18,11 @@ body {
 .dashboard {
     max-width:900px;
     width:100%;
-    background:linear-gradient(135deg, #2a2a2a, #1e1e1e);
+    /*background:linear-gradient(135deg, #01003d, #01002e);*/
+    background-image: url('background.jpg');
+    background-size: cover; /* makes the image cover the entire background */
+    background-repeat: no-repeat; /* prevents tiling */
+    background-position: center; /* centers the image */
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
     display: flex;
@@ -27,19 +31,40 @@ body {
 }
 
 .header{
-    background-color:  #0d1b2a;
+    align-items:left; 
+    display: flexbox; 
+    background-color:  #ffffff24;
     padding: 15px 20px;
     display: flex; 
     justify-content: space-between;
     align-items: center; 
-    border-bottom: 2px solid #415a77; 
+    border-bottom: 2px solid #ffffff75; 
+    box-shadow: rgba(224, 235, 247, 0.14);
+    text-shadow: 0 0 3px #ffffff14; 
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.header img{
+    background-color: #ffffff24; 
+    position:relative;
+    z-index: 1; 
+    right:100px; 
+    width:75px;
+    height:83px;
+    border-bottom: 0px; 
+    padding:0px;
 }
 
 .header-title{
+    position:relative; 
+    z-index:2;
     font-size: 24px; 
     font-weight: bold; 
-    color: #4cc9f0;
+    color: hsl(194, 100%, 76%);
+    padding:5px;
 } 
+
 
 .status-indicators{
     display: flex;
@@ -80,12 +105,18 @@ body {
     gap:15px;
 }
 
-.panel{
-    background-color: #2d3748;
-    border-radius: 10px; 
-    padding: 15px; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-} 
+.panel {
+    background: rgba(255, 255, 255, 0.164); /* semi-transparent white */
+    border-radius: 5px; 
+    padding: 20px; 
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.277);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    border: 1px solid rgba(255, 255, 255, 0.4); /* subtle frosted border */
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3); /* softer depth shadow */
+}
+
 
 .panel-title{
     font-size: 18px; 
@@ -237,4 +268,75 @@ body {
 
 .status-info{
     background-color: #1e40af;
+}
+
+/* Intersection Display */
+.intersection-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+.traffic-light {
+    background: #222b3c;
+    padding: 15px;
+    border-radius: 12px;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.light {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #3a445a;
+    opacity: 0.3;
+}
+
+.light.active {
+    opacity: 1;
+    box-shadow: 0 0 20px;
+}
+
+.red.active { background: red; box-shadow: 0 0 20px red; }
+.yellow.active { background: yellow; box-shadow: 0 0 20px yellow; }
+.green.active { background: limegreen; box-shadow: 0 0 20px limegreen; }
+
+/* Intersection road cross */
+.road {
+    margin-top: 10px;
+    width: 100%;
+    height: 100px;
+    background: #0e1421;
+    position: relative;
+    border-radius: 8px;
+}
+.road::before, .road::after {
+    content: "";
+    position: absolute;
+    background: #3a445a;
+}
+.road::before {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    transform: translateY(-50%);
+}
+.road::after {
+    left: 50%;
+    top: 0;
+    width: 12px;
+    height: 100%;
+    transform: translateX(-50%);
+}
+
+.starry {
+    position:relative; 
+    z-index:-1;
 }
