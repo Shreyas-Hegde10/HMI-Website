@@ -1,342 +1,380 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-} 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 
 body {
-    background-color: #1a1a1a;
-    color: #e0e0e0; 
-    display:flex; 
-    justify-content: center;
-    align-items: center;
-    min-height:100vh; 
-    padding:20px;
-} 
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
 
 .dashboard {
-    max-width:900px;
-    width:100%;
-    /*background:linear-gradient(135deg, #01003d, #01002e);*/
-    background-image: url('background.jpg');
-    background-size: cover; /* makes the image cover the entire background */
-    background-repeat: no-repeat; /* prevents tiling */
-    background-position: center; /* centers the image */
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
-    display: flex;
-    flex-direction: column;
-    overflow: hidden; 
+  max-width: 900px;
+  width: 100%;
+  /*background:linear-gradient(135deg, #01003d, #01002e);*/
+  background-image: url("background.jpg");
+  background-size: cover; /* makes the image cover the entire background */
+  background-repeat: no-repeat; /* prevents tiling */
+  background-position: center; /* centers the image */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.header{
-    align-items:left; 
-    display: flexbox; 
-    background-color:  #ffffff24;
-    padding: 15px 20px;
-    display: flex; 
-    justify-content: space-between;
-    align-items: center; 
-    border-bottom: 2px solid #ffffff75; 
-    box-shadow: rgba(224, 235, 247, 0.14);
-    text-shadow: 0 0 3px #ffffff14; 
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+.header {
+  align-items: left;
+  display: flexbox;
+  background-color: #ffffff24;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ffffff75;
+  box-shadow: rgba(224, 235, 247, 0.14);
+  text-shadow: 0 0 3px #ffffff14;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
-.header img{
-    background-color: #ffffff24; 
-    position:relative;
-    z-index: 1; 
-    right:100px; 
-    width:75px;
-    height:83px;
-    border-bottom: 0px; 
-    padding:0px;
+.header img {
+  background: transparent !important;
+  background-color: transparent !important;
+  position: relative;
+  z-index: 1;
+  right: 120px;
+  width: 75px;
+  height: 83px;
+  border-bottom: 0px;
+  padding: 0px;
 }
 
-.header-title{
-    position:relative; 
-    z-index:2;
-    font-size: 24px; 
-    font-weight: bold; 
-    color: hsl(194, 100%, 76%);
-    padding:5px;
-} 
-
-
-.status-indicators{
-    display: flex;
-    gap:15px; 
+.header-title {
+  position: relative;
+  z-index: 2;
+  font-size: 24px;
+  font-weight: bold;
+  color: hsl(194, 100%, 76%);
+  padding: 5px;
 }
 
-.car-status{
-    display: flex;
-    align-items:center; 
-    gap:5px;
-    font-size:14px;
+.status-indicators {
+  display: flex;
+  gap: 15px;
 }
 
-.status-dot{
-    width:10px; 
-    height:10px;
-    border-radius: 50%;
+.car-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
 }
 
-.standby{
-    background-color: #fbbf24;
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }
 
-.disabled{
-    background-color: #ef4444
+.standby {
+  background-color: #fbbf24;
 }
 
-.main-controls{
-    display:flex; 
-    padding: 20px; 
-    gap: 15px; 
-} 
+.disabled {
+  background-color: #ef4444;
+}
 
-.left-panel{
-    flex: 1; 
-    display:flex; 
-    flex-direction:column; 
-    gap:15px;
+.main-controls {
+  display: flex;
+  padding: 20px;
+  gap: 15px;
+}
+
+.left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .panel {
-    background: rgba(255, 255, 255, 0.164); /* semi-transparent white */
-    border-radius: 5px; 
-    padding: 20px; 
-    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.277);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.164); /* semi-transparent white */
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.277);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 
-    border: 1px solid rgba(255, 255, 255, 0.4); /* subtle frosted border */
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3); /* softer depth shadow */
+  border: 1px solid rgba(255, 255, 255, 0.4); /* subtle frosted border */
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3); /* softer depth shadow */
 }
 
-
-.panel-title{
-    font-size: 18px; 
-    margin-bottom:15px; 
-    color:#90cdf4;
-    border-bottom: 1px solid #4a5568;
-    padding-bottom: 8px; 
-    font-weight: 600;
-} 
-
-.cacc-controls, .lcc-controls{
-    display:flex; 
-    flex-direction: column;
-    gap: 12px;
-} 
-
-.enable-row{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-} 
-
-.control-enable{
-    font-size:14px; 
-} 
-
-.button-group{
-    display:flex;
-    gap:10px;
-} 
-
-.btn{
-    padding: 8px 15px; 
-    border:none;
-    border-radius:6px; 
-    cursor:pointer;
-    font-weight: 500; 
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} 
-
-.btn-primary{
-    background-color: #2563eb; 
-    color: white;
+.panel-title {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #90cdf4;
+  border-bottom: 1px solid #4a5568;
+  padding-bottom: 8px;
+  font-weight: 600;
 }
 
-.btn-primary:hover{
-    background-color:#1d4ed8;
-} 
-
-.btn-success{
-   background-color: #16a34a;
-   color: white; 
+.cacc-controls,
+.lcc-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.btn-success:hover{
-    background-color:#15803d;
+.enable-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.btn-warning{
-    background-color: #d97706;
-    color: white;
+.control-enable {
+  font-size: 14px;
 }
 
-.btn-warning:hover{
-    background-color:#b45309;
-} 
-
-.btn-danger{
-    background-color: #dc2626;
-    color: white;
-} 
-
-.btn-danger:hover{
-    background-color:#b91c1c;
-} 
-
-.btn:disabled{
-    background-color: #4b5563;
-    color: #9ca3af;
-    cursor: not-allowed;
+.button-group {
+  display: flex;
+  gap: 10px;
 }
 
-.right-panel{
-    flex:1; 
-    display: flex;
-    flex-direction: column;
-    gap:15px;
-} 
-
-.speed-display{
-    display:flex; 
-    align-items:center;  
-    justify-content: center;
-    margin: 15px 0;
+.btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.speed-value{
-    font-size:48px; 
-    font-weight: bold; 
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
 }
 
-.speed-unit{
-    font-size: 18px; 
-    color:#a5b4fc;
+.btn-primary:hover {
+  background-color: #1d4ed8;
 }
 
-.slider-container{
-    margin: 10px 0;
+.btn-success {
+  background-color: #16a34a;
+  color: white;
 }
 
-.slider-label{
-    display:flex; 
-    justify-content: space-between;
-    margin-bottom: 5px; 
+.btn-success:hover {
+  background-color: #15803d;
 }
 
-.slider{
-    width:100%; 
-    height:8px; 
-    border-radius:5px; 
-    -webkit-appearance: none;
-    background: #4b5563;
-    outline:none;
-} 
-
-.slider:hover{
-    opacity:1
-} 
-
-.slider::-webkit-slider-thumb{
-    -webkit-appearance: none; 
-     width: 20px; 
-     height: 20px; 
-     border-radius: 50%;
-     background: #4cc9f0; 
-     cursor: pointer;
+.btn-warning {
+  background-color: #d97706;
+  color: white;
 }
 
-.status-message{
-    text-align:center;
-    padding:12px; 
-    border-radius:5px; 
-    font-size:14px; 
-    margin:5px;
-} 
+.btn-warning:hover {
+  background-color: #b45309;
+}
 
-.status-info{
-    background-color: #1e40af;
+.btn-danger {
+  background-color: #dc2626;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+.btn:disabled {
+  background-color: #4b5563;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.speed-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.speed-value {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.speed-unit {
+  font-size: 18px;
+  color: #a5b4fc;
+}
+
+.slider-container {
+  margin: 10px 0;
+}
+
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  background: #4b5563;
+  outline: none;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4cc9f0;
+  cursor: pointer;
+}
+
+.status-message {
+  text-align: center;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.status-info {
+  background-color: #1e40af;
 }
 
 /* Intersection Display */
 .intersection-display {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
 }
 
 .traffic-light {
-    background: #222b3c;
-    padding: 15px;
-    border-radius: 12px;
-    width: 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-    margin-bottom: 20px;
+  background: #222b3c;
+  padding: 15px;
+  border-radius: 12px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .light {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #3a445a;
-    opacity: 0.3;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #3a445a;
+  opacity: 0.3;
 }
 
 .light.active {
-    opacity: 1;
-    box-shadow: 0 0 20px;
+  opacity: 1;
+  box-shadow: 0 0 20px;
 }
 
-.red.active { background: red; box-shadow: 0 0 20px red; }
-.yellow.active { background: yellow; box-shadow: 0 0 20px yellow; }
-.green.active { background: limegreen; box-shadow: 0 0 20px limegreen; }
+.red.active {
+  background: red;
+  box-shadow: 0 0 20px red;
+}
+.yellow.active {
+  background: yellow;
+  box-shadow: 0 0 20px yellow;
+}
+.green.active {
+  background: limegreen;
+  box-shadow: 0 0 20px limegreen;
+}
 
 /* Intersection road cross */
 .road {
-    margin-top: 10px;
-    width: 100%;
-    height: 100px;
-    background: #0e1421;
-    position: relative;
-    border-radius: 8px;
+  margin-top: 10px;
+  width: 100%;
+  height: 100px;
+  background: #0e1421;
+  position: relative;
+  border-radius: 8px;
 }
-.road::before, .road::after {
-    content: "";
-    position: absolute;
-    background: #3a445a;
+.road::before,
+.road::after {
+  content: "";
+  position: absolute;
+  background: #3a445a;
 }
 .road::before {
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 12px;
-    transform: translateY(-50%);
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  transform: translateY(-50%);
 }
 .road::after {
-    left: 50%;
-    top: 0;
-    width: 12px;
-    height: 100%;
-    transform: translateX(-50%);
+  left: 50%;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  transform: translateX(-50%);
 }
 
 .starry {
-    position:relative; 
-    z-index:-1;
+  position: relative;
+  z-index: -1;
+}
+
+.parking-spots {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-bottom: 16px;
+}
+
+.parking-spot {
+  width: 80px;
+  height: 40px;
+  background-color: #4b5563;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.parking-spot.available {
+  background-color: #10b981;
+  color: white;
+}
+
+.parking-spot.occupied {
+  background-color: #ef4444;
+  color: white;
 }

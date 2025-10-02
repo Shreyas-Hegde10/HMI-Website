@@ -1,98 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>HMI Control Panel</title>
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
     <div class="dashboard">
-        <div class="header">
-            <div class="header-title">Welcome, Driver</div> 
-            <img src="caddyLogo.png" class = "header"></img> 
-            <div class="status-indicators">
-                <div class="car-status">
-                    <div class="status-dot standby"></div>
-                    <span>CACC: Standby</span>
-                </div>
-                <div class="car-status">
-                    <div class="status-dot disabled"></div>
-                    <span>LCC: Disabled</span>
-                </div>
-                <div class="car-status">
-                    <div class="status-dot disabled"></div>
-                    <span>Parking: Disabled</span>
-                </div>
-            </div>
+      <div class="header">
+        <div class="header-title">Welcome, Driver</div>
+        <img src="caddyLogo.png" />
+        <div class="status-indicators">
+          <div class="car-status">
+            <div class="status-dot standby"></div>
+            <span>CACC: Standby</span>
+          </div>
+          <div class="car-status">
+            <div class="status-dot disabled"></div>
+            <span>LCC: Disabled</span>
+          </div>
+          <div class="car-status">
+            <div class="status-dot disabled"></div>
+            <span>Parking: Disabled</span>
+          </div>
         </div>
+      </div>
 
-        <div class="main-controls">
-            <div class="left-panel">
-                <div class="panel">
-                    <div class="panel-title">CACC Controls</div>
-                    <div class="cacc-controls">
-                        <div class="enable-row">
-                            <span class="control-enable">CACC Enable</span>
-                            <button id="cacc-enable" class="btn btn-primary">Enable</button>
-                        </div>
-
-                        <div class="speed-display">
-                            <div class="speed-value">65</div>
-                            <div class="speed-unit">mph</div>
-                        </div> 
-
-                        <div class="enable-row">
-                            <span class="control-enable">Speed Controls</span>
-                            <div class="button-group">
-                                <button id="resumeIncrease" class="btn btn-success" disabled>RES+</button>
-                                <button id="setDecrease" class="btn btn-warning" disabled>SET-</button>    
-                            </div>
-                        </div>
-
-                        <div class="enable-row">
-                            <span class="control-enable">Cancel CACC</span>
-                            <button id="cancelCACC" class="btn btn-danger" disabled>Cancel</button>
-                        </div> 
-
-                        <div class="slider-container">
-                            <div class="slider-label">
-                                <span>Following Distance</span>
-                                <span id="distanceValue">Medium</span>
-                            </div> 
-                            <input type="range" min="1" max="3" value="2" class="slider" id="distanceSlider">
-                        </div>
-                    </div>
+      <div class="main-controls">
+        <div class="left-panel">
+          <div class="panel">
+            <div class="panel-title">CACC Controls</div>
+            <div class="cacc-controls">
+              <div class="enable-row">
+                <span class="control-enable">CACC Enable</span>
+                <button id="cacc-enable" class="btn btn-primary">Enable</button>
+              </div>
+              <div class="speed-display">
+                <div class="speed-value">65</div>
+                <div class="speed-unit">mph</div>
+              </div>
+              <div class="enable-row">
+                <span class="control-enable">Speed Controls</span>
+                <div class="button-group">
+                  <button id="resumeIncrease" class="btn btn-success" disabled>
+                    RES+
+                  </button>
+                  <button id="setDecrease" class="btn btn-warning" disabled>
+                    SET-
+                  </button>
                 </div>
-
-                <div class="panel">
-                    <div class="panel-title">LCC Controls</div>
-                    <div class="lcc-controls">
-                        <div class="enable-row">
-                            <span class="control-enable">LCC Enable</span>
-                            <button id="activateLCC" class="btn btn-primary" disabled>Enable</button>
-                        </div>
-                        <div class="status-message status-info">
-                            CACC must be enabled first to activate LCC.
-                        </div>
-                    </div>
+              </div>
+              <div class="enable-row">
+                <span class="control-enable">Cancel CACC</span>
+                <button id="cancelCACC" class="btn btn-danger" disabled>
+                  Cancel
+                </button>
+              </div>
+              <div class="slider-container">
+                <div class="slider-label">
+                  <span>Following Distance</span>
+                  <span id="distanceValue">Medium</span>
                 </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="3"
+                  value="2"
+                  class="slider"
+                  id="distanceSlider"
+                />
+              </div>
             </div>
-            <div class="right-panel">
-                <div class="panel">
-                    <div class="panel-title">Intersection Display</div>
-                    <div class="intersection-display">
-                        <div class="traffic-light">
-                            <div class="light red"></div>
-                            <div class="light yellow"></div>
-                            <div class="light green"></div>
-                        </div>
-        <div class="road"></div>
-                </div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">LCC Controls</div>
+            <div class="lcc-controls">
+              <div class="enable-row">
+                <span class="control-enable">LCC Enable</span>
+                <button id="activateLCC" class="btn btn-primary" disabled>
+                  Enable
+                </button>
+              </div>
+              <div class="status-message status-info">
+                CACC must be enabled first to activate LCC.
+              </div>
             </div>
+          </div>
         </div>
+        <div class="right-panel">
+          <div class="panel">
+            <div class="panel-title">Intersection Display</div>
+            <div class="intersection-display">
+              <div class="traffic-light">
+                <div class="light red"></div>
+                <div class="light yellow"></div>
+                <div class="light green"></div>
+              </div>
+              <div class="road"></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title">Automatic Parking</div>
+            <div class="parking-controls">
+              <div class="enable-row">
+                <span class="control-enable">Controls</span>
+                <div class="button-group">
+                  <button id="activateParking" class="btn btn-primary">
+                    Activate
+                  </button>
+                  <button id="startParking" class="btn btn-success" disabled>
+                    Start
+                  </button>
+                  <button id="cancelParking" class="btn btn-danger" disabled>
+                    Cancel
+                  </button>
+                  <button id="finishParking" class="btn btn-success" disabled>
+                    Finish
+                  </button>
+                </div>
+              </div>
+              <div class="parking-spots">
+                <div class="parking-spot occupied">Occupied</div>
+                <div class="parking-spot available">Available</div>
+                <div class="parking-spot available">Available</div>
+                <div class="parking-spot occupied">Occupied</div>
+              </div>
+
+              <div class="status-message status-info" id="parkingStatus">
+                Press the "Activate" button to automatic parking.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="main.js"></script>
-</body>
-</html> 
+  </body>
+</html>
