@@ -14,8 +14,8 @@
         <img src="caddyLogo.png" />
         <div class="status-indicators">
           <div class="car-status">
-            <div class="status-dot standby"></div>
-            <span>CACC: Standby</span>
+            <div class="status-dot disabled"></div>
+            <span>CACC: Disabled</span>
           </div>
           <div class="car-status">
             <div class="status-dot disabled"></div>
@@ -35,7 +35,7 @@
             <div class="cacc-controls">
               <div class="enable-row">
                 <span class="control-enable">CACC Enable</span>
-                <button id="cacc-enable" class="btn btn-primary">Enable</button>
+                <button id="caccEnable" class="btn btn-primary">Enable</button>
               </div>
               <div class="speed-display">
                 <div class="speed-value">65</div>
@@ -70,6 +70,7 @@
                   value="2"
                   class="slider"
                   id="distanceSlider"
+                  disabled
                 />
               </div>
             </div>
@@ -130,7 +131,7 @@
               </div>
 
               <div class="status-message status-info" id="parkingStatus">
-                Press the "Activate" button to automatic parking.
+                Press the "Activate" button to begin automatic parking.
               </div>
             </div>
           </div>
