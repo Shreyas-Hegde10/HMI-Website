@@ -279,7 +279,15 @@ body {
 }
 
 .status-info {
-  background-color: #1e40af;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.status-inprogress {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.status-success {
+  background: linear-gradient(135deg, #10b981, #047857);
 }
 
 /* Intersection Display */

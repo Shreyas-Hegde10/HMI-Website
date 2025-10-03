@@ -122,29 +122,36 @@ function updateUI() {
   if (state.parking.active && !state.parking.maneuverInProgress) {
     // Activated but not started - show Start and Cancel buttons
     activateParkingBtn.disabled = true;
-    startParkingBtn.disabled = false;
     cancelParkingBtn.disabled = false;
     finishParkingBtn.disabled = true;
 
+    if (state.parking.spotFound) {
+      startParkingBtn.disabled = false;
+    } else {
+      startParkingBtn.disabled = true;
+    }
+
     // Update status indicator
     document
-      .querySelectorAll(".status")[2]
+      .querySelectorAll(".car-status")[2]
       .querySelector(".status-dot").className = "status-dot standby";
-    document.querySelectorAll(".status")[2].querySelector("span").textContent =
-      "Parking: Standby";
+    document
+      .querySelectorAll(".car-status")[2]
+      .querySelector("span").textContent = "Parking: Standby";
   } else if (state.parking.maneuverInProgress) {
     // Maneuver in progress - show Cancel and Finish buttons (Start stays enabled)
     activateParkingBtn.disabled = true;
-    startParkingBtn.disabled = false;
+    startParkingBtn.disabled = true;
     cancelParkingBtn.disabled = false;
     finishParkingBtn.disabled = false;
 
     // Update status indicator
     document
-      .querySelectorAll(".status")[2]
+      .querySelectorAll(".car-status")[2]
       .querySelector(".status-dot").className = "status-dot active";
-    document.querySelectorAll(".status")[2].querySelector("span").textContent =
-      "Parking: Active";
+    document
+      .querySelectorAll(".car-status")[2]
+      .querySelector("span").textContent = "Parking: Active";
   } else {
     // Inactive state
     activateParkingBtn.disabled = false;
@@ -154,10 +161,11 @@ function updateUI() {
 
     // Update status indicator
     document
-      .querySelectorAll(".status")[2]
+      .querySelectorAll(".car-status")[2]
       .querySelector(".status-dot").className = "status-dot disabled";
-    document.querySelectorAll(".status")[2].querySelector("span").textContent =
-      "Parking: Disabled";
+    document
+      .querySelectorAll(".car-status")[2]
+      .querySelector("span").textContent = "Parking: Disabled";
   }
 
   speedValue.textContent = state.cacc.setSpeed;
@@ -214,20 +222,20 @@ activateParkingBtn.addEventListener("click", function () {
   state.parking.searching = true;
 
   // Enable Start and Cancel buttons immediately upon activation
-  startParkingBtn.disabled = false;
+  startParkingBtn.disabled = true;
   cancelParkingBtn.disabled = false;
 
-  parkingStatus.innerHTML =
-    '<i class="fas fa-search"></i> Searching for parking spots...';
-  parkingStatus.className = "status-message status-warning";
+  parkingStatus.textContent = "Searching for parking spots...";
+  parkingStatus.className = "status-message status-inprogress";
 
   // Simulate finding parking spots after a delay
   setTimeout(() => {
     state.parking.searching = false;
-    state.parking.spotSelected = true;
-    parkingStatus.innerHTML =
-      '<i class="fas fa-check-circle"></i> Parking spots detected. Press "Start" to begin parking.';
+    state.parking.spotFound = true;
+    parkingStatus.textContent =
+      'Parking spots detected. Press "Start" to begin parking.';
     parkingStatus.className = "status-message status-success";
+    startParkingBtn.disabled = false;
     updateUI();
   }, 2000);
 
@@ -235,13 +243,13 @@ activateParkingBtn.addEventListener("click", function () {
 });
 
 startParkingBtn.addEventListener("click", function () {
+  startParkingBtn.disabled = true;
   state.parking.maneuverInProgress = true;
   // Start button should NOT be disabled after starting
-  startParkingBtn.disabled = false;
   finishParkingBtn.disabled = false;
-  parkingStatus.innerHTML =
-    '<i class="fas fa-car-side"></i> Parking maneuver in progress. Press "Finish" when complete.';
-  parkingStatus.className = "status-message status-warning";
+  parkingStatus.textContent =
+    'Parking maneuver in progress. Press "Finish" when complete.';
+  parkingStatus.className = "status-message status-inprogress";
   updateUI();
 });
 
@@ -249,7 +257,7 @@ cancelParkingBtn.addEventListener("click", function () {
   // Reset all parking states
   state.parking.active = false;
   state.parking.searching = false;
-  state.parking.spotSelected = false;
+  state.parking.spotFound = false;
   state.parking.maneuverInProgress = false;
 
   // Reset buttons to initial state
@@ -257,8 +265,8 @@ cancelParkingBtn.addEventListener("click", function () {
   cancelParkingBtn.disabled = true;
   finishParkingBtn.disabled = true;
 
-  parkingStatus.innerHTML =
-    '<i class="fas fa-info-circle"></i> Parking canceled. Press "Activate" to search again.';
+  parkingStatus.textContent =
+    'Parking canceled. Press "Activate" to search again.';
   parkingStatus.className = "status-message status-info";
   updateUI();
 });
@@ -267,22 +275,21 @@ finishParkingBtn.addEventListener("click", function () {
   // Complete parking maneuver
   state.parking.active = false;
   state.parking.searching = false;
-  state.parking.spotSelected = false;
+  state.parking.spotFound = false;
   state.parking.maneuverInProgress = false;
 
   // Reset all buttons
   startParkingBtn.disabled = true;
   cancelParkingBtn.disabled = true;
   finishParkingBtn.disabled = true;
+  activateParkingBtn.disabled = true;
 
-  parkingStatus.innerHTML =
-    '<i class="fas fa-flag-checkered"></i> Parking completed successfully!';
+  parkingStatus.textContent = "Parking completed successfully!";
   parkingStatus.className = "status-message status-success";
 
   // Reset status after 3 seconds
   setTimeout(() => {
-    parkingStatus.innerHTML =
-      '<i class="fas fa-info-circle"></i> Press "Activate" to search for parking spots';
+    parkingStatus.textContent = 'Press "Activate" to search for parking spots';
     parkingStatus.className = "status-message status-info";
     updateUI();
   }, 3000);
