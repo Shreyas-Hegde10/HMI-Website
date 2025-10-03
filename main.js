@@ -8,6 +8,11 @@ const resumeIncreaseBtn = document.getElementById("resumeIncrease");
 const setDecreaseBtn = document.getElementById("setDecrease");
 const activateLccBtn = document.getElementById("activateLCC");
 const speedValue = document.querySelector(".speed-value");
+const activateParkingBtn = document.getElementById("activateParking");
+const startParkingBtn = document.getElementById("startParking");
+const cancelParkingBtn = document.getElementById("cancelParking");
+const finishParkingBtn = document.getElementById("finishParking");
+const parkingStatus = document.getElementById("parkingStatus");
 
 // Defining state
 const state = {
@@ -113,6 +118,48 @@ function updateUI() {
       .querySelector("span").textContent = "LCC: Disabled";
   }
 
+  // Parking state - CORRECTED LOGIC
+  if (state.parking.active && !state.parking.maneuverInProgress) {
+    // Activated but not started - show Start and Cancel buttons
+    activateParkingBtn.disabled = true;
+    startParkingBtn.disabled = false;
+    cancelParkingBtn.disabled = false;
+    finishParkingBtn.disabled = true;
+
+    // Update status indicator
+    document
+      .querySelectorAll(".status")[2]
+      .querySelector(".status-dot").className = "status-dot standby";
+    document.querySelectorAll(".status")[2].querySelector("span").textContent =
+      "Parking: Standby";
+  } else if (state.parking.maneuverInProgress) {
+    // Maneuver in progress - show Cancel and Finish buttons (Start stays enabled)
+    activateParkingBtn.disabled = true;
+    startParkingBtn.disabled = false;
+    cancelParkingBtn.disabled = false;
+    finishParkingBtn.disabled = false;
+
+    // Update status indicator
+    document
+      .querySelectorAll(".status")[2]
+      .querySelector(".status-dot").className = "status-dot active";
+    document.querySelectorAll(".status")[2].querySelector("span").textContent =
+      "Parking: Active";
+  } else {
+    // Inactive state
+    activateParkingBtn.disabled = false;
+    startParkingBtn.disabled = true;
+    cancelParkingBtn.disabled = true;
+    finishParkingBtn.disabled = true;
+
+    // Update status indicator
+    document
+      .querySelectorAll(".status")[2]
+      .querySelector(".status-dot").className = "status-dot disabled";
+    document.querySelectorAll(".status")[2].querySelector("span").textContent =
+      "Parking: Disabled";
+  }
+
   speedValue.textContent = state.cacc.setSpeed;
 }
 
@@ -159,6 +206,88 @@ cancelCaccBtn.addEventListener("click", function () {
 distanceSlider.addEventListener("input", function () {
   const distanceValues = ["Short", "Medium", "Long"];
   distanceValue.textContent = distanceValues[this.value - 1];
+});
+
+// CORRECTED PARKING CONTROL LOGIC
+activateParkingBtn.addEventListener("click", function () {
+  state.parking.active = true;
+  state.parking.searching = true;
+
+  // Enable Start and Cancel buttons immediately upon activation
+  startParkingBtn.disabled = false;
+  cancelParkingBtn.disabled = false;
+
+  parkingStatus.innerHTML =
+    '<i class="fas fa-search"></i> Searching for parking spots...';
+  parkingStatus.className = "status-message status-warning";
+
+  // Simulate finding parking spots after a delay
+  setTimeout(() => {
+    state.parking.searching = false;
+    state.parking.spotSelected = true;
+    parkingStatus.innerHTML =
+      '<i class="fas fa-check-circle"></i> Parking spots detected. Press "Start" to begin parking.';
+    parkingStatus.className = "status-message status-success";
+    updateUI();
+  }, 2000);
+
+  updateUI();
+});
+
+startParkingBtn.addEventListener("click", function () {
+  state.parking.maneuverInProgress = true;
+  // Start button should NOT be disabled after starting
+  startParkingBtn.disabled = false;
+  finishParkingBtn.disabled = false;
+  parkingStatus.innerHTML =
+    '<i class="fas fa-car-side"></i> Parking maneuver in progress. Press "Finish" when complete.';
+  parkingStatus.className = "status-message status-warning";
+  updateUI();
+});
+
+cancelParkingBtn.addEventListener("click", function () {
+  // Reset all parking states
+  state.parking.active = false;
+  state.parking.searching = false;
+  state.parking.spotSelected = false;
+  state.parking.maneuverInProgress = false;
+
+  // Reset buttons to initial state
+  startParkingBtn.disabled = true;
+  cancelParkingBtn.disabled = true;
+  finishParkingBtn.disabled = true;
+
+  parkingStatus.innerHTML =
+    '<i class="fas fa-info-circle"></i> Parking canceled. Press "Activate" to search again.';
+  parkingStatus.className = "status-message status-info";
+  updateUI();
+});
+
+finishParkingBtn.addEventListener("click", function () {
+  // Complete parking maneuver
+  state.parking.active = false;
+  state.parking.searching = false;
+  state.parking.spotSelected = false;
+  state.parking.maneuverInProgress = false;
+
+  // Reset all buttons
+  startParkingBtn.disabled = true;
+  cancelParkingBtn.disabled = true;
+  finishParkingBtn.disabled = true;
+
+  parkingStatus.innerHTML =
+    '<i class="fas fa-flag-checkered"></i> Parking completed successfully!';
+  parkingStatus.className = "status-message status-success";
+
+  // Reset status after 3 seconds
+  setTimeout(() => {
+    parkingStatus.innerHTML =
+      '<i class="fas fa-info-circle"></i> Press "Activate" to search for parking spots';
+    parkingStatus.className = "status-message status-info";
+    updateUI();
+  }, 3000);
+
+  updateUI();
 });
 
 // Traffic light simulation
