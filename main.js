@@ -35,7 +35,6 @@ const state = {
   },
 };
 
-// ...existing code...
 // Update UI based on state
 function updateUI() {
   // CACC State
@@ -80,7 +79,7 @@ function updateUI() {
       .querySelector("span").textContent = "CACC: Disabled";
   }
 
-  // LCC State - FIXED
+  // LCC State
   if (state.cacc.enabled) {
     activateLccBtn.disabled = false;
     activateLccBtn.textContent = state.lcc.active ? "Cancel LCC" : "Enable";
@@ -118,9 +117,9 @@ function updateUI() {
       .querySelector("span").textContent = "LCC: Disabled";
   }
 
-  // Parking state - CORRECTED LOGIC
+  // Parking state
   if (state.parking.active && !state.parking.maneuverInProgress) {
-    // Activated but not started - show Start and Cancel buttons
+    // Activated but not started
     activateParkingBtn.disabled = true;
     cancelParkingBtn.disabled = false;
     finishParkingBtn.disabled = true;
@@ -139,7 +138,7 @@ function updateUI() {
       .querySelectorAll(".car-status")[2]
       .querySelector("span").textContent = "Parking: Standby";
   } else if (state.parking.maneuverInProgress) {
-    // Maneuver in progress - show Cancel and Finish buttons (Start stays enabled)
+    // Parking in progress
     activateParkingBtn.disabled = true;
     startParkingBtn.disabled = true;
     cancelParkingBtn.disabled = false;
@@ -153,7 +152,7 @@ function updateUI() {
       .querySelectorAll(".car-status")[2]
       .querySelector("span").textContent = "Parking: Active";
   } else {
-    // Inactive state
+    // Inactive parking state
     activateParkingBtn.disabled = false;
     startParkingBtn.disabled = true;
     cancelParkingBtn.disabled = true;
@@ -216,19 +215,16 @@ distanceSlider.addEventListener("input", function () {
   distanceValue.textContent = distanceValues[this.value - 1];
 });
 
-// CORRECTED PARKING CONTROL LOGIC
 activateParkingBtn.addEventListener("click", function () {
   state.parking.active = true;
   state.parking.searching = true;
 
-  // Enable Start and Cancel buttons immediately upon activation
   startParkingBtn.disabled = true;
   cancelParkingBtn.disabled = false;
 
   parkingStatus.textContent = "Searching for parking spots...";
   parkingStatus.className = "status-message status-inprogress";
 
-  // Simulate finding parking spots after a delay
   setTimeout(() => {
     state.parking.searching = false;
     state.parking.spotFound = true;
@@ -245,7 +241,6 @@ activateParkingBtn.addEventListener("click", function () {
 startParkingBtn.addEventListener("click", function () {
   startParkingBtn.disabled = true;
   state.parking.maneuverInProgress = true;
-  // Start button should NOT be disabled after starting
   finishParkingBtn.disabled = false;
   parkingStatus.textContent =
     'Parking maneuver in progress. Press "Finish" when complete.';
@@ -254,7 +249,6 @@ startParkingBtn.addEventListener("click", function () {
 });
 
 cancelParkingBtn.addEventListener("click", function () {
-  // Reset all parking states
   state.parking.active = false;
   state.parking.searching = false;
   state.parking.spotFound = false;
