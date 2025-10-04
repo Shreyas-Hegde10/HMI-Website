@@ -71,6 +71,7 @@ function updateUI() {
     cancelCaccBtn.disabled = true;
     resumeIncreaseBtn.disabled = true;
     setDecreaseBtn.disabled = true;
+    distanceSlider.disabled = true;
     document
       .querySelectorAll(".car-status")[0]
       .querySelector(".status-dot").className = "status-dot disabled";
