@@ -192,7 +192,7 @@ resumeIncreaseBtn.addEventListener("click", function () {
   if (!state.cacc.active) {
     state.cacc.active = true;
   } else {
-    state.cacc.setSpeed += 1;
+    state.cacc.setSpeed = Math.min(130, state.cacc.setSpeed + 1);
   }
   updateUI();
 });
